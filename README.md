@@ -1,7 +1,6 @@
 # go-topdown-mmo-client
 
-#### Run
-Required dependencies
+### Dependencies
 
 Debian / Ubuntu
 `sudo apt install libc6-dev libglu1-mesa-dev libgl1-mesa-dev libxcursor-dev libxi-dev libxinerama-dev libxrandr-dev libxxf86vm-dev libasound2-dev pkg-config`
@@ -18,10 +17,12 @@ Arch
 Alpine
 `sudo apk add alsa-lib-dev libx11-dev libxrandr-dev libxcursor-dev libxinerama-dev libxi-dev mesa-dev pkgconf`
 
+
 Finally resolve ebiten dependency with `go get github.com/hajimehoshi/ebiten/v2`
 
-Make sure go-topdown-mmo-server is running and run with
-`go run main.go`
+### Run
+
+Make sure go-topdown-mmo-server is running and run with `go run main.go`
 
 #### TODO
   - Docker and detailed project description
