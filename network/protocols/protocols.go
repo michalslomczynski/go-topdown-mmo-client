@@ -3,10 +3,10 @@ package protocols
 import (
 	"bytes"
 	"encoding/gob"
-	"fmt"
+	"log"
+
 	"github.com/michalslomczynski/go-topdown-mmo-client/resources/entities/player"
 	"github.com/michalslomczynski/go-topdown-mmo-client/resources/worldmap"
-	"log"
 )
 
 func AskForMap(dec *gob.Decoder, enc *gob.Encoder) *worldmap.Map {
@@ -45,7 +45,6 @@ func AskForPlayerPosList(dec *gob.Decoder, enc *gob.Encoder) *map[int16]player.P
 
 	pl := new(map[int16]player.Position)
 	dec.Decode(pl)
-	fmt.Println(*pl)
 
 	return pl
 }
