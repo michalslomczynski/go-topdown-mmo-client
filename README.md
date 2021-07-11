@@ -6,8 +6,8 @@ Reduced performance might be useful to observe how interpolation of players posi
 
 Client docker image uses host X11 server to display GUI which requires authentication in most cases.
 The fastest and simplest method to bypass authentication is to run `xhost +local:root` before use and `xhost -local:root` afterwards (it is important to not forget to execute the latter - [reference](http://wiki.ros.org/docker/Tutorials/GUI "details")).
-
-To run client use `docker-compose build` and `docker-compose up`.
+#### Run
+`docker-compose build` and `docker-compose up`.
 
 ## Local build
 ### Dependencies
