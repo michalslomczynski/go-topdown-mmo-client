@@ -1,13 +1,15 @@
 package worldmap
 
 import (
-	"github.com/michalslomczynski/go-topdown-mmo-client/data/window"
+	"bytes"
+	_ "embed"
 	"image"
 	_ "image/png"
 	"log"
 
+	"github.com/michalslomczynski/go-topdown-mmo-client/data/window"
+
 	"github.com/hajimehoshi/ebiten/v2"
-	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 )
 
 type Map struct {
@@ -30,7 +32,11 @@ type Position struct {
 	Y int16
 }
 
-var Worldmap Map
+var (
+	Worldmap Map
+	//go:embed tiles.png
+	tilesBytes []byte
+)
 
 func (m *Map) Init() {
 	m.ScreenHeight = window.ScreenHeight
@@ -38,11 +44,11 @@ func (m *Map) Init() {
 	m.XNumInScreen = m.ScreenWidth / m.TileSize
 	m.YNumInScreen = m.ScreenHeight / m.TileSize
 
-	var err error
-	m.tilesImage, _, err = ebitenutil.NewImageFromFile("resources/assets/map/tiles.png")
+	tiles, _, err := image.Decode(bytes.NewReader(tilesBytes))
 	if err != nil {
 		log.Fatal(err)
 	}
+	m.tilesImage = ebiten.NewImageFromImage(tiles)
 }
 
 func (m *Map) GetTile(val int16) *ebiten.Image {
